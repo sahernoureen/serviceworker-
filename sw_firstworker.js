@@ -1,7 +1,6 @@
-var CACHE_NAME = 'first-sw';
+var CACHE_NAME = 'first_v';
 var urlsToCache = [
     '/',
-
 ];
 
 self.addEventListener('install', function(event) {
