@@ -2,7 +2,10 @@ var CACHE_NAME = 'Mycache';
 var urlsToCache = [
     '/',
     'index.html',
-    'index.css'
+    'index.css',
+    "http://placekitten.com/225/175",
+    "http://placekitten.com/226/175" ,
+    "http://placekitten.com/227/175"
 ];
 
 self.addEventListener('install', function(event) {
