@@ -1,6 +1,8 @@
 var CACHE_NAME = 'first_v';
 var urlsToCache = [
     '/',
+    'index.html',
+    'index.css'
 ];
 
 self.addEventListener('install', function(event) {
@@ -41,7 +43,7 @@ self.addEventListener('fetch', function (event) {
 
                 //if request succeed, cache
                 var responseClone = httpRes.clone();
-                caches.open('first-sw').then(function (cache) {
+                caches.open(CACHE_NAME).then(function (cache) {
                     cache.put(event.request, responseClone);
                 });
 
