@@ -1,4 +1,4 @@
-var CACHE_NAME = 'first_v';
+var CACHE_NAME = 'Mycache';
 var urlsToCache = [
     '/',
     'index.html',
@@ -15,6 +15,23 @@ self.addEventListener('install', function(event) {
             })
     );
 });
+
+self.addEventListener("activate", e => {
+    console.log("service worker is active");
+    e.waitUntil(
+      caches.keys().then(function(cacheNames) {
+        return Promise.all(
+          cacheNames
+          .filter(function(cacheName) {
+             if (cacheName != CACHE_NAME) return true;
+           })
+            .map(function(cacheName) {
+              return caches.delete(cacheName);
+            })
+        );
+      })
+    );
+  });
 
 //in the fetch event, block some network request
 self.addEventListener('fetch', function (event) {
